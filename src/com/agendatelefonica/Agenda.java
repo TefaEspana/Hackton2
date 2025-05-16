@@ -39,12 +39,33 @@ public class Agenda {
     }
 
     // METODOS
-    public void anadirContacto(Contactos contacto){//Conctacto c
+    public void anadirContacto(Contactos nuevoContacto) {
+        if (agenda.size() >= tamanoMax) {
+            System.out.println("Agenda llena, no se pueden añadir más contactos");
+            return;
+        }
 
+        for (Contactos c : agenda) {
+            if (c.getNombre().equalsIgnoreCase(nuevoContacto.getNombre()) &&
+                    c.getApellido().equalsIgnoreCase(nuevoContacto.getApellido())) {
+                System.out.println("El contacto ya existe");
+                return;
+            }
+        }
+        agenda.add(nuevoContacto);
+        System.out.println("Contacto añadido correctamente\n");
     }
-    public void existeContacto(){//Conctacto c
+    public void existeContacto(Contactos nuevoContacto) {
+        for (Contactos c : agenda) {
+            if (c.getNombre().equalsIgnoreCase(nuevoContacto.getNombre()) &&
+                    c.getApellido().equalsIgnoreCase(nuevoContacto.getApellido())) {
+                System.out.println("El contacto ya existe");
+                return;
+            }
+        }
+        System.out.println("El contacto no existe");
+    }
 
-    }
     @Override
     public String toString(){
         if(agenda.isEmpty()){
