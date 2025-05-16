@@ -1,7 +1,9 @@
 package com.agendatelefonica;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class Agenda {
     private List<Contactos> agenda;
@@ -43,8 +45,24 @@ public class Agenda {
     public void existeContacto(){//Conctacto c
 
     }
-    public void listarContactos(){
+    @Override
+    public String toString(){
+        if(agenda.isEmpty()){
+            return "La lista se encuentra vacia";
+        }
 
+        List<Contactos> ordenados = new ArrayList<>(agenda);
+        ordenados.sort(Comparator.comparing(Contactos::getNombre)
+                .thenComparing(Contactos::getApellido));
+
+        StringBuilder listaContactos = new StringBuilder("Lista de contactos \n");
+        int contadorContacto = 1;
+        for(Contactos contacto : ordenados){
+            listaContactos.append(contadorContacto).append(". ").append(contacto).append("\n");
+            contadorContacto++;
+        }
+
+        return listaContactos.toString();
     }
     public void buscaContacto(){//String nombre
 
@@ -52,8 +70,21 @@ public class Agenda {
     public void eliminarContacto(){//Contacto c
 
     }
-    public void modificarTelefono(){//String nombre, String apellido, String nuevoTelefono
+    public void modificarTelefono(String nombre, String apellido, String nuevoTelefono){//String nombre, String apellido, String nuevoTelefono
 
+        if (Objects.equals(nombre, "") || Objects.equals(apellido, "") || Objects.equals(nuevoTelefono, "")) {
+            System.out.println("El nombre, el apellido y el numero a reemplazar no pueden estar vacíos.");
+            return;
+        }
+
+        for(Contactos contactoModificar : agenda){
+            if (contactoModificar.getNombre().equalsIgnoreCase(nombre) &&
+                    contactoModificar.getApellido().equalsIgnoreCase(apellido)) {
+                    contactoModificar.setTelefono(nuevoTelefono);
+                    return;
+            }
+        }
+        System.out.printf("El contacto %s %s no se encuentra en tu lista actual de contactos\n",nombre,apellido);
     }
     public void agendaLlena(){
 
