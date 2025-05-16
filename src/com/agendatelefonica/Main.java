@@ -68,10 +68,22 @@ public class Main {
 
                         break;
                     case 4:
-
+                        System.out.println("🔍 Buscar contacto");
+                        System.out.print("Ingresa el nombre completo (Nombre Apellido) de contacto que quieres buscar: ");
+                        String nombreCompleto = scanner.nextLine().trim();
+                        agenda.buscaContacto(nombreCompleto);
                         break;
                     case 5:
+                        System.out.println("🗑️ Eliminar contacto");
+                        System.out.print("Ingresa el nombre del contacto que quieres eliminar: ");
+                        String nombre = scanner.nextLine().trim();
+                        System.out.print("Ingresa el apellido del contacto que quieres eliminar: ");
+                        String apellido = scanner.nextLine().trim();
+                        System.out.print("Ingresa el número de teléfono del contacto que quieres eliminar: ");
+                        String telefono = scanner.nextLine().trim();
 
+                        String contactoCompleto = nombre + " " + apellido + " " + telefono;
+                        agenda.eliminarContacto(contactoCompleto);
                         break;
                     case 6:
 
