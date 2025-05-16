@@ -65,7 +65,7 @@ public class Main {
 
                         break;
                     case 3:
-
+                        System.out.println(agenda);
                         break;
                     case 4:
 
@@ -74,7 +74,13 @@ public class Main {
 
                         break;
                     case 6:
-
+                        System.out.println("Ingrese el nombre del contacto a modificar");
+                        String nombre = scanner.nextLine();
+                        System.out.println("Ingrese el apellido del contacto a modificar");
+                        String apellido = scanner.nextLine();
+                        System.out.println("Ingrese el telefono nuevo a asignar");
+                        String telefono = scanner.nextLine();
+                        agenda.modificarTelefono(nombre,apellido,telefono);
                         break;
                     case 7:
 
