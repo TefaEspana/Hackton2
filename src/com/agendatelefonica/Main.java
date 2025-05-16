@@ -42,6 +42,9 @@ public class Main {
     public static void menuTerminal(){
         int opcion;
         Agenda agenda = tamanoAgenda();
+        String nombre = "";
+        String apellido = "";
+        String telefono = "";
         do{
             try{
                 System.out.println("---Menu Terminal---");
@@ -76,22 +79,22 @@ public class Main {
                     case 5:
                         System.out.println("🗑️ Eliminar contacto");
                         System.out.print("Ingresa el nombre del contacto que quieres eliminar: ");
-                        String nombre = scanner.nextLine().trim();
+                         nombre = scanner.nextLine().trim();
                         System.out.print("Ingresa el apellido del contacto que quieres eliminar: ");
-                        String apellido = scanner.nextLine().trim();
+                         apellido = scanner.nextLine().trim();
                         System.out.print("Ingresa el número de teléfono del contacto que quieres eliminar: ");
-                        String telefono = scanner.nextLine().trim();
+                         telefono = scanner.nextLine().trim();
 
                         String contactoCompleto = nombre + " " + apellido + " " + telefono;
                         agenda.eliminarContacto(contactoCompleto);
                         break;
                     case 6:
                         System.out.println("Ingrese el nombre del contacto a modificar");
-                        String nombre = scanner.nextLine();
+                         nombre = scanner.nextLine();
                         System.out.println("Ingrese el apellido del contacto a modificar");
-                        String apellido = scanner.nextLine();
+                         apellido = scanner.nextLine();
                         System.out.println("Ingrese el telefono nuevo a asignar");
-                        String telefono = scanner.nextLine();
+                         telefono = scanner.nextLine();
                         agenda.modificarTelefono(nombre,apellido,telefono);
                         break;
                     case 7:
