@@ -83,10 +83,10 @@ public class Main {
                         agenda.modificarTelefono(nombre,apellido,telefono);
                         break;
                     case 7:
-
+                        agenda.agendaLlena();
                         break;
                     case 8:
-
+                        agenda.espacioLibres();
                         break;
                     case 9:
                         System.out.println("--Hasta una proxima ocasión--");
