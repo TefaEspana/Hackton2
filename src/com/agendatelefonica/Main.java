@@ -45,10 +45,11 @@ public class Main {
         String nombre = "";
         String apellido = "";
         String telefono = "";
+        Contactos contacto;
         do{
             try{
                 System.out.println("---Menu Terminal---");
-                System.out.println("Seleccione una de las sigueintes ocpiones");
+                System.out.println("Seleccione una de las siguientes opciones");
                 System.out.println("1.Añadir contacto");
                 System.out.println("2.Buscar existencia de contacto");
                 System.out.println("3.Listar contactos");
@@ -62,10 +63,23 @@ public class Main {
                 scanner.nextLine();
                 switch (opcion){
                     case 1:
+                        System.out.print("Ingresa el nombre del contacto que quieres agregar: ");
+                        nombre = scanner.nextLine().trim();
+                        System.out.print("Ingresa el apellido del contacto que quieres agregar: ");
+                        apellido = scanner.nextLine().trim();
+                        System.out.print("Ingresa el número de teléfono del contacto que quieres agregar: ");
+                        telefono = scanner.nextLine().trim();
+                        contacto = new Contactos(nombre, apellido, telefono);
+                        agenda.anadirContacto(contacto);
 
                         break;
                     case 2:
-
+                        System.out.print("Ingresa el nombre del contacto que quieres verificar: ");
+                        nombre = scanner.nextLine().trim();
+                        System.out.print("Ingresa el apellido del contacto que quieres verificar: ");
+                        apellido = scanner.nextLine().trim();
+                        contacto = new Contactos(nombre, apellido);
+                        agenda.existeContacto(contacto);
                         break;
                     case 3:
                         System.out.println(agenda);
@@ -82,11 +96,8 @@ public class Main {
                          nombre = scanner.nextLine().trim();
                         System.out.print("Ingresa el apellido del contacto que quieres eliminar: ");
                          apellido = scanner.nextLine().trim();
-                        System.out.print("Ingresa el número de teléfono del contacto que quieres eliminar: ");
-                         telefono = scanner.nextLine().trim();
-
-                        String contactoCompleto = nombre + " " + apellido + " " + telefono;
-                        agenda.eliminarContacto(contactoCompleto);
+                        contacto = new Contactos(nombre, apellido);
+                        agenda.eliminarContacto(contacto);
                         break;
                     case 6:
                         System.out.println("Ingrese el nombre del contacto a modificar");

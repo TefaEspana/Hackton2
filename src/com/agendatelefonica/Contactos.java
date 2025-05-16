@@ -9,6 +9,11 @@ public class Contactos {
     public Contactos() {
     }
 
+    public Contactos(String nombre, String apellido) {
+        this.nombre = nombre.trim();
+        this.apellido = apellido.trim();
+    }
+
     public Contactos(String nombre, String apellido, String telefono) {
         this.nombre = nombre.trim();
         this.apellido = apellido.trim();

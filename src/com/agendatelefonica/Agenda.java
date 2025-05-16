@@ -52,6 +52,7 @@ public class Agenda {
                 return;
             }
         }
+
         agenda.add(nuevoContacto);
         System.out.println("Contacto añadido correctamente\n");
     }
@@ -95,10 +96,9 @@ public class Agenda {
         }
         System.out.println("No se encontró el contacto.");
     }
-    public void eliminarContacto(String contactoC){//Contacto c
+    public void eliminarContacto(Contactos contactoC){//Contacto c
         for(Contactos contacto : agenda){
-            String contactoCompleto = contacto.getNombre()+" "+contacto.getApellido()+" "+contacto.getTelefono();
-            if (contactoCompleto.equalsIgnoreCase(contactoC)){
+            if (Objects.equals(contacto.getNombre(), contactoC.getNombre()) && Objects.equals(contacto.getApellido(), contactoC.getApellido())){
                 agenda.remove(contacto);
                 System.out.println("Contacto: "+contacto.getNombre()+" "+contacto.getApellido()+" Eliminado.");
                 return;
@@ -125,6 +125,8 @@ public class Agenda {
     public void agendaLlena(){
         if(tamanoMax == agenda.size()){
             System.out.println("Agenda llena");
+        }else{
+            System.out.println("La agenda aun tiene espacio disponible");
         }
 
     }
