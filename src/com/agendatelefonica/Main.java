@@ -1,5 +1,7 @@
 package com.agendatelefonica;
 
+import com.agendatelefonica.vista.tamano.Tamano;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -158,6 +160,10 @@ public class Main {
     }
 
     public static void menuVisual(){
-        System.out.println("Espacio menu visual");
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Tamano().setVisible(true);
+            }
+        });
     }
 }
