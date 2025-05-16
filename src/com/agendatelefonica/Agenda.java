@@ -56,15 +56,17 @@ public class Agenda {
         agenda.add(nuevoContacto);
         System.out.println("Contacto añadido correctamente\n");
     }
-    public void existeContacto(Contactos nuevoContacto) {
+    public boolean existeContacto(Contactos nuevoContacto) {
         for (Contactos c : agenda) {
             if (c.getNombre().equalsIgnoreCase(nuevoContacto.getNombre()) &&
                     c.getApellido().equalsIgnoreCase(nuevoContacto.getApellido())) {
                 System.out.println("El contacto ya existe");
-                return;
+                return true;
             }
         }
         System.out.println("El contacto no existe");
+        return false;
+
     }
 
     @Override
@@ -86,51 +88,58 @@ public class Agenda {
 
         return listaContactos.toString();
     }
-    public void buscaContacto(String nombreCompleto){//String nombre
+    public String buscaContacto(String nombreCompleto){//String nombre
         for(Contactos contacto : agenda){
             String nombreYApellido = contacto.getNombre()+" "+contacto.getApellido();
             if (nombreYApellido.equalsIgnoreCase(nombreCompleto)){
                 System.out.println("El telefono es: "+contacto.getTelefono());
-                return;// Termina el metodo si lo encuentra
+                return contacto.getTelefono();// Termina el metodo si lo encuentra
             }
         }
         System.out.println("No se encontró el contacto.");
+        return "No se encontro el contacto";
     }
-    public void eliminarContacto(Contactos contactoC){//Contacto c
+    public boolean eliminarContacto(Contactos contactoC){//Contacto c
         for(Contactos contacto : agenda){
             if (Objects.equals(contacto.getNombre(), contactoC.getNombre()) && Objects.equals(contacto.getApellido(), contactoC.getApellido())){
                 agenda.remove(contacto);
                 System.out.println("Contacto: "+contacto.getNombre()+" "+contacto.getApellido()+" Eliminado.");
-                return;
+                return true;
             }
         }
         System.out.println("Contacto no existe.");
+        return false;
     }
-    public void modificarTelefono(String nombre, String apellido, String nuevoTelefono){//String nombre, String apellido, String nuevoTelefono
+    public boolean modificarTelefono(String nombre, String apellido, String nuevoTelefono){//String nombre, String apellido, String nuevoTelefono
 
         if (Objects.equals(nombre, "") || Objects.equals(apellido, "") || Objects.equals(nuevoTelefono, "")) {
             System.out.println("El nombre, el apellido y el numero a reemplazar no pueden estar vacíos.");
-            return;
+            return false;
         }
 
         for(Contactos contactoModificar : agenda){
             if (contactoModificar.getNombre().equalsIgnoreCase(nombre) &&
                     contactoModificar.getApellido().equalsIgnoreCase(apellido)) {
                     contactoModificar.setTelefono(nuevoTelefono);
-                    return;
+                    return true;
             }
         }
         System.out.printf("El contacto %s %s no se encuentra en tu lista actual de contactos\n",nombre,apellido);
+        return false;
     }
-    public void agendaLlena(){
+    public boolean agendaLlena(){
         if(tamanoMax == agenda.size()){
             System.out.println("Agenda llena");
+            return  true;
         }else{
             System.out.println("La agenda aun tiene espacio disponible");
+            return false;
         }
 
     }
-    public void espacioLibres(){
-        System.out.println("Espacios libres en la agenda: "+(tamanoMax - agenda.size()));
+    public int espacioLibres(){
+        int espacionsLibres = tamanoMax - agenda.size();
+        System.out.println("Espacios libres en la agenda: "+espacionsLibres);
+        return espacionsLibres;
     }
 }

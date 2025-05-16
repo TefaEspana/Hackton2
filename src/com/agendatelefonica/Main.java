@@ -46,6 +46,7 @@ public class Main {
         String apellido = "";
         String telefono = "";
         Contactos contacto;
+
         do{
             try{
                 System.out.println("---Menu Terminal---");
@@ -54,7 +55,7 @@ public class Main {
                 System.out.println("2.Buscar existencia de contacto");
                 System.out.println("3.Listar contactos");
                 System.out.println("4.Buscar contacto");
-                System.out.println("5.Eliminar ocntacto");
+                System.out.println("5.Eliminar contacto");
                 System.out.println("6.Modificar Telefono");
                 System.out.println("7.Mostar si la agenda esta llena");
                 System.out.println("8.Mostar los espacios libres de la agenda");
@@ -80,6 +81,7 @@ public class Main {
                         apellido = scanner.nextLine().trim();
                         contacto = new Contactos(nombre, apellido);
                         agenda.existeContacto(contacto);
+
                         break;
                     case 3:
                         System.out.println(agenda);
@@ -89,6 +91,7 @@ public class Main {
                         System.out.print("Ingresa el nombre completo (Nombre Apellido) de contacto que quieres buscar: ");
                         String nombreCompleto = scanner.nextLine().trim();
                         agenda.buscaContacto(nombreCompleto);
+
                         break;
                     case 5:
                         System.out.println("🗑️ Eliminar contacto");
