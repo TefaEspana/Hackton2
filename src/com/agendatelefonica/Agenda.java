@@ -37,8 +37,8 @@ public class Agenda {
     }
 
     // METODOS
-    public void anadirContacto(){//Conctacto c
-
+    public void anadirContacto(Contactos contacto){//Conctacto c
+        agenda.add(contacto);
     }
     public void existeContacto(){//Conctacto c
 
@@ -71,9 +71,12 @@ public class Agenda {
 
     }
     public void agendaLlena(){
+        if(tamanoMax == agenda.size()){
+            System.out.println("Agenda llena");
+        }
 
     }
     public void espacioLibres(){
-
+        System.out.println("Espacios libres en la agenda: "+(tamanoMax - agenda.size()));
     }
 }
